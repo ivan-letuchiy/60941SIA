@@ -14,7 +14,7 @@ class Flat extends Model
 
     public function house(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(House::class, 'house_id_for_flats', 'flat_id', 'house_id');
+        return $this->belongsTo(House::class, 'house_id_for_flats', 'house_id');
     }
 
     public function owners(): \Illuminate\Database\Eloquent\Relations\HasMany

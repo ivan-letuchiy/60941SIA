@@ -7,14 +7,8 @@ use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
-    public function show($id): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function show(string $owner_id)
     {
-        // Получаем владельца с его вопросами и данными из таблицы голосования (pivot)
-        $owner = Owner::with(['questions' => function ($query) {
-            $query->withPivot('answer');
-        }])->findOrFail($id);
-
-        // Передаем данные в представление
-        return view('owners.show', compact('owner'));
+        return view('owner_show', ['owner_show' => Owner::all()->where('owner_id', $owner_id)->first()]);
     }
 }
